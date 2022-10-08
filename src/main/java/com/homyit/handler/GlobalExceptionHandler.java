@@ -1,11 +1,10 @@
 package com.homyit.handler;
 
 
-import com.homyit.domain.VO.ResultVO;
+import com.homyit.entity.vo.ResultVO;
 import com.homyit.exception.BizException;
 import com.homyit.enums.ExceptionCodeEnum;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -35,11 +34,5 @@ public class GlobalExceptionHandler {
         return ResultVO.error(e.getError());
     }
 
-    @ExceptionHandler(Exception.class)
-    public ResultVO<ExceptionCodeEnum> handleConstraintViolationException(Exception e) {
-//        log.warn("错误: {}", e.getMessage(), e);
-        // 一般只需返回泛化的错误信息，比如“参数错误”
-        return ResultVO.error(ExceptionCodeEnum.TOKEN_ILLEGAL, e.getMessage());
-    }
 
 }

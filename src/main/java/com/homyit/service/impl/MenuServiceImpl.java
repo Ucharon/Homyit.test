@@ -1,7 +1,7 @@
 package com.homyit.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.homyit.domain.Menu;
+import com.homyit.entity.Menu;
 import com.homyit.service.MenuService;
 import com.homyit.mapper.MenuMapper;
 import org.springframework.stereotype.Service;

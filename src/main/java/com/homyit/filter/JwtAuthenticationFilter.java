@@ -1,12 +1,9 @@
 package com.homyit.filter;
 
-import com.homyit.domain.LoginUser;
-import com.homyit.enums.ExceptionCodeEnum;
-import com.homyit.exception.BizException;
+import com.homyit.entity.LoginUser;
 import com.homyit.util.JwtUtil;
 import com.homyit.util.RedisCache;
 import io.jsonwebtoken.Claims;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

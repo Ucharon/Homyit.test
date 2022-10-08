@@ -1,6 +1,6 @@
 package com.homyit.service;
 
-import com.homyit.domain.User;
+import com.homyit.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.Map;

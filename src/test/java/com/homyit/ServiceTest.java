@@ -1,6 +1,6 @@
 package com.homyit;
 
-import com.homyit.domain.User;
+import com.homyit.entity.User;
 import com.homyit.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

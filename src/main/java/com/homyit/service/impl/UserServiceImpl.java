@@ -1,10 +1,8 @@
 package com.homyit.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.homyit.domain.LoginUser;
-import com.homyit.domain.User;
-import com.homyit.exception.BizException;
-import com.homyit.enums.ExceptionCodeEnum;
+import com.homyit.entity.LoginUser;
+import com.homyit.entity.User;
 import com.homyit.service.UserService;
 import com.homyit.mapper.UserMapper;
 import com.homyit.util.JwtUtil;
@@ -18,7 +16,6 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * @author charon

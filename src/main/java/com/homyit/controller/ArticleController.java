@@ -1,6 +1,6 @@
 package com.homyit.controller;
 
-import com.homyit.domain.VO.ResultVO;
+import com.homyit.entity.vo.ResultVO;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,10 +17,10 @@ public class ArticleController {
 
     /**
      * 添加文章
-     * 权限：add_article
+     * 权限：publish_article
      * @return
      */
-    @PreAuthorize("hasAuthority('add_article')")
+    @PreAuthorize("hasAuthority('publish_article')")
     @PostMapping
     public ResultVO save() {
         return ResultVO.success();
@@ -34,5 +34,7 @@ public class ArticleController {
     public ResultVO page() {
         return ResultVO.success();
     }
+
+
 
 }

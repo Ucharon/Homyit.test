@@ -1,7 +1,7 @@
 package com.homyit.handler;
 
 import com.alibaba.fastjson.JSON;
-import com.homyit.domain.VO.ResultVO;
+import com.homyit.entity.vo.ResultVO;
 import com.homyit.enums.ExceptionCodeEnum;
 import com.homyit.util.WebUtils;
 import org.springframework.security.access.AccessDeniedException;

@@ -1,4 +1,4 @@
-package com.homyit.domain;
+package com.homyit.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;

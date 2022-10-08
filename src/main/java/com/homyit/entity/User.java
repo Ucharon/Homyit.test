@@ -1,4 +1,4 @@
-package com.homyit.domain;
+package com.homyit.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;

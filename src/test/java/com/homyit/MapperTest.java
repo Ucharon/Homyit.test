@@ -1,7 +1,7 @@
 package com.homyit;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.homyit.domain.User;
+import com.homyit.entity.User;
 import com.homyit.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

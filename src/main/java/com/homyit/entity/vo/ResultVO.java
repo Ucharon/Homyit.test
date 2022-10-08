@@ -1,4 +1,4 @@
-package com.homyit.domain.VO;
+package com.homyit.entity.vo;
 
 import com.homyit.enums.ExceptionCodeEnum;
 import com.homyit.enums.ResultCodeEnum;
