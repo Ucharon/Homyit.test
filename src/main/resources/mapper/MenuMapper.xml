@@ -5,21 +5,31 @@
 <mapper namespace="com.homyit.mapper.MenuMapper">
 
     <resultMap id="BaseResultMap" type="com.homyit.domain.Menu">
-            <id property="id" column="id" jdbcType="BIGINT"/>
-            <result property="menuName" column="menu_name" jdbcType="VARCHAR"/>
-            <result property="path" column="path" jdbcType="VARCHAR"/>
-            <result property="component" column="component" jdbcType="VARCHAR"/>
-            <result property="visible" column="visible" jdbcType="CHAR"/>
-            <result property="status" column="status" jdbcType="CHAR"/>
-            <result property="perms" column="perms" jdbcType="VARCHAR"/>
-            <result property="icon" column="icon" jdbcType="VARCHAR"/>
-            <result property="createBy" column="create_by" jdbcType="BIGINT"/>
-            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
-            <result property="updateBy" column="update_by" jdbcType="BIGINT"/>
-            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
-            <result property="isDeleted" column="is_deleted" jdbcType="INTEGER"/>
-            <result property="remark" column="remark" jdbcType="VARCHAR"/>
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="menuName" column="menu_name" jdbcType="VARCHAR"/>
+        <result property="path" column="path" jdbcType="VARCHAR"/>
+        <result property="component" column="component" jdbcType="VARCHAR"/>
+        <result property="visible" column="visible" jdbcType="CHAR"/>
+        <result property="status" column="status" jdbcType="CHAR"/>
+        <result property="perms" column="perms" jdbcType="VARCHAR"/>
+        <result property="icon" column="icon" jdbcType="VARCHAR"/>
+        <result property="createBy" column="create_by" jdbcType="BIGINT"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateBy" column="update_by" jdbcType="BIGINT"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="isDeleted" column="is_deleted" jdbcType="INTEGER"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
     </resultMap>
+    <select id="selectPermsByUserId" resultType="java.lang.String">
+        SELECT DISTINCT m.`path`
+        FROM user_role ur
+                 LEFT JOIN `role` r ON ur.`role_id` = `id`
+                 LEFT JOIN `role_menu` rm ON ur.`role_id` = rm.`role_id`
+                 LEFT JOIN `menu` m ON m.`id` = rm.`menu_id`
+        WHERE user_id = #{userId}
+          AND r.`status` = 1
+          AND m.`status` = 1
+    </select>
 
 
 </mapper>

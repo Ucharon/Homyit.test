@@ -4,6 +4,8 @@ import com.homyit.domain.Menu;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
 * @author charon
 * @description 针对表【menu】的数据库操作Mapper
@@ -13,6 +15,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface MenuMapper extends BaseMapper<Menu> {
 
+    List<String> selectPermsByUserId(Long id);
 }
 
 

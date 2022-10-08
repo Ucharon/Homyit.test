@@ -13,7 +13,11 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import javax.annotation.Resource;
 
@@ -27,6 +31,9 @@ public class SpringSecurityConfig {
     private AuthenticationEntryPoint authenticationEntryPoint;
 
     @Resource
+    private AccessDeniedHandler accessDeniedHandler;
+
+    @Resource
     private JwtAuthenticationFilter jwtAuthenticationFilter;
 
     /**
@@ -37,6 +44,7 @@ public class SpringSecurityConfig {
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 
     /**
      * 获取AuthenticationManager（认证管理器），登录时认证使用
@@ -70,13 +78,22 @@ public class SpringSecurityConfig {
 
                 //自定义异常处理
                 .exceptionHandling()
-                .authenticationEntryPoint(authenticationEntryPoint).and()
-
+                .authenticationEntryPoint(authenticationEntryPoint)
+                .accessDeniedHandler(accessDeniedHandler).and()
 
                 //将token校验过滤器加入到过滤器链中
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 
-
+    /**
+     * 配置跨源访问(CORS)
+     * @return
+     */
+    @Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
+        return source;
+    }
 }

@@ -5,20 +5,27 @@ import com.homyit.domain.LoginUser;
 import com.homyit.domain.User;
 import com.homyit.exception.BizException;
 import com.homyit.enums.ExceptionCodeEnum;
+import com.homyit.mapper.MenuMapper;
 import com.homyit.mapper.UserMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Objects;
 
 @Service
+@Slf4j
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Resource
     private UserMapper userMapper;
+
+    @Resource
+    private MenuMapper menuMapper;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -32,10 +39,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             throw new BizException(ExceptionCodeEnum.LOGIN_ERROR);
         }
 
-        //TODO 查询对应的权限信息
-
+        //查询对应的权限信息
+        List<String> list = menuMapper.selectPermsByUserId(user.getId());
+//        log.info(list.toString());
 
         //把数据封装成UserDetails返回
-        return new LoginUser(user);
+        return new LoginUser(user, list);
     }
 }
