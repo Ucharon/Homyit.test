@@ -1,11 +1,13 @@
 package com.homyit.controller;
 
+import com.homyit.entity.Article;
 import com.homyit.entity.vo.ResultVO;
+import com.homyit.service.ArticleService;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 
 /**
  * 文章相关的接口
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/article")
 public class ArticleController {
 
+    @Resource
+    ArticleService articleService;
 
     /**
      * 添加文章
@@ -22,7 +26,9 @@ public class ArticleController {
      */
     @PreAuthorize("hasAuthority('publish_article')")
     @PostMapping
-    public ResultVO save() {
+    public ResultVO insertArticle(@Validated @RequestBody Article article) {
+        articleService.insertArticle(article);
+
         return ResultVO.success();
     }
 

@@ -1,4 +1,4 @@
-package com.homyit.util;
+package com.homyit.utils;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.parser.ParserConfig;

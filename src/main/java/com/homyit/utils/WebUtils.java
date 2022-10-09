@@ -1,4 +1,4 @@
-package com.homyit.util;
+package com.homyit.utils;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;

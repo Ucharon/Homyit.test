@@ -3,7 +3,7 @@ package com.homyit.handler;
 import com.alibaba.fastjson.JSON;
 import com.homyit.entity.vo.ResultVO;
 import com.homyit.enums.ExceptionCodeEnum;
-import com.homyit.util.WebUtils;
+import com.homyit.utils.WebUtils;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.stereotype.Component;

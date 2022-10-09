@@ -1,4 +1,4 @@
-package com.homyit.util;
+package com.homyit.utils;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;

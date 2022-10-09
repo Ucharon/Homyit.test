@@ -1,8 +1,8 @@
 package com.homyit.filter;
 
 import com.homyit.entity.LoginUser;
-import com.homyit.util.JwtUtil;
-import com.homyit.util.RedisCache;
+import com.homyit.utils.JwtUtil;
+import com.homyit.utils.RedisCache;
 import io.jsonwebtoken.Claims;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -61,6 +61,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         UsernamePasswordAuthenticationToken authenticationToken
                 = new UsernamePasswordAuthenticationToken(loginUser, null, loginUser.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+
+//        //使用线程隔离，将用户id封装到当前线程，便于之后获取id
+//        BaseContext.setCurrentId(Long.valueOf(userId));
 
         filterChain.doFilter(request, response);
     }

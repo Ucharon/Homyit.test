@@ -43,7 +43,7 @@ public class ResultVO<T> {
      * @return
      */
     public static <T> ResultVO<T> success() {
-        return new ResultVO<>(ResultCodeEnum.SUCCESS.getCode(),
+        return new ResultVO(ResultCodeEnum.SUCCESS.getCode(),
                 ResultCodeEnum.SUCCESS.getMessage());
     }
 
@@ -54,7 +54,7 @@ public class ResultVO<T> {
      * @return
      */
     public static <T> ResultVO<T> error(ExceptionCodeEnum exceptionCodeEnum) {
-        return new ResultVO<>(exceptionCodeEnum.getCode(),
+        return new ResultVO(exceptionCodeEnum.getCode(),
                 exceptionCodeEnum.getDesc());
     }
 
@@ -66,7 +66,7 @@ public class ResultVO<T> {
      * @return
      */
     public static <T> ResultVO<T> error(ExceptionCodeEnum exceptionCodeEnum, String msg) {
-        return new ResultVO<>(exceptionCodeEnum.getCode(), msg);
+        return new ResultVO(exceptionCodeEnum.getCode(), msg);
     }
 
     /**
