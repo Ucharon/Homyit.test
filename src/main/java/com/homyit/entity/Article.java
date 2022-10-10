@@ -1,13 +1,11 @@
 package com.homyit.entity;
 
-import com.baomidou.mybatisplus.annotation.*;
-
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Date;
-
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.Data;
 
 /**
@@ -19,9 +17,7 @@ import lombok.Data;
 public class Article implements Serializable {
     /**
      * 文章id
-     * 规定序列化规则为Long to String
      */
-    @JsonSerialize(using = ToStringSerializer.class)
     @TableId
     private Long id;
 
@@ -34,6 +30,11 @@ public class Article implements Serializable {
      * 文章标题
      */
     private String title;
+
+    /**
+     * 文章简介
+     */
+    private String summary;
 
     /**
      * 文章内容
@@ -53,14 +54,12 @@ public class Article implements Serializable {
     /**
      * 创建时间
      */
-    @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
+    private Date createTime;
 
     /**
      * 更新时间
      */
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime updateTime;
+    private Date updateTime;
 
     /**
      * 点赞数

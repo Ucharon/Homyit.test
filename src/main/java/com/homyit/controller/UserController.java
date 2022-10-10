@@ -1,7 +1,7 @@
 package com.homyit.controller;
 
 import com.homyit.entity.User;
-import com.homyit.entity.vo.ResultVO;
+import com.homyit.entity.vo.ResultVo;
 import com.homyit.service.UserService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -17,15 +17,15 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/login")
-    public ResultVO<Map<String, String>> login(@RequestBody @Validated User user) {
+    public ResultVo<Map<String, String>> login(@RequestBody @Validated User user) {
         Map<String, String> map = userService.login(user);
-        return ResultVO.success(map);
+        return ResultVo.success(map);
     }
 
     @GetMapping("/logout")
-    public ResultVO logout() {
+    public ResultVo logout() {
         userService.logout();
-        return ResultVO.success();
+        return ResultVo.success();
     }
 
 

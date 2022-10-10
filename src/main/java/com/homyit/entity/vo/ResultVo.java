@@ -7,19 +7,19 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class ResultVO<T> {
+public class ResultVo<T> {
 
     private Integer code;
     private String message;
     private T data;
 
-    public ResultVO(Integer code, String message, T data) {
+    public ResultVo(Integer code, String message, T data) {
         this.code = code;
         this.message = message;
         this.data = data;
     }
 
-    public ResultVO(Integer code, String message) {
+    public ResultVo(Integer code, String message) {
         this.code = code;
         this.message = message;
     }
@@ -31,8 +31,8 @@ public class ResultVO<T> {
      * @param <T>
      * @return
      */
-    public static <T> ResultVO<T> success(T data) {
-        return new ResultVO<>(ResultCodeEnum.SUCCESS.getCode(),
+    public static <T> ResultVo<T> success(T data) {
+        return new ResultVo<>(ResultCodeEnum.SUCCESS.getCode(),
                 ResultCodeEnum.SUCCESS.getMessage(), data);
     }
 
@@ -42,8 +42,8 @@ public class ResultVO<T> {
      * @param <T>
      * @return
      */
-    public static <T> ResultVO<T> success() {
-        return new ResultVO(ResultCodeEnum.SUCCESS.getCode(),
+    public static <T> ResultVo<T> success() {
+        return new ResultVo(ResultCodeEnum.SUCCESS.getCode(),
                 ResultCodeEnum.SUCCESS.getMessage());
     }
 
@@ -53,8 +53,8 @@ public class ResultVO<T> {
      * @param exceptionCodeEnum
      * @return
      */
-    public static <T> ResultVO<T> error(ExceptionCodeEnum exceptionCodeEnum) {
-        return new ResultVO(exceptionCodeEnum.getCode(),
+    public static <T> ResultVo<T> error(ExceptionCodeEnum exceptionCodeEnum) {
+        return new ResultVo(exceptionCodeEnum.getCode(),
                 exceptionCodeEnum.getDesc());
     }
 
@@ -65,8 +65,8 @@ public class ResultVO<T> {
      * @param msg
      * @return
      */
-    public static <T> ResultVO<T> error(ExceptionCodeEnum exceptionCodeEnum, String msg) {
-        return new ResultVO(exceptionCodeEnum.getCode(), msg);
+    public static <T> ResultVo<T> error(ExceptionCodeEnum exceptionCodeEnum, String msg) {
+        return new ResultVo(exceptionCodeEnum.getCode(), msg);
     }
 
     /**
@@ -77,8 +77,8 @@ public class ResultVO<T> {
      * @param <T>
      * @return
      */
-    public static <T> ResultVO<T> error(ExceptionCodeEnum exceptionCodeEnum, T data) {
-        return new ResultVO<>(exceptionCodeEnum.getCode(),
+    public static <T> ResultVo<T> error(ExceptionCodeEnum exceptionCodeEnum, T data) {
+        return new ResultVo<>(exceptionCodeEnum.getCode(),
                 exceptionCodeEnum.getDesc(), data);
     }
 }

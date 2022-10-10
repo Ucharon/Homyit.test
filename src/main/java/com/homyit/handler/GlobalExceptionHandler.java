@@ -1,7 +1,7 @@
 package com.homyit.handler;
 
 
-import com.homyit.entity.vo.ResultVO;
+import com.homyit.entity.vo.ResultVo;
 import com.homyit.exception.BizException;
 import com.homyit.enums.ExceptionCodeEnum;
 import lombok.extern.slf4j.Slf4j;
@@ -23,15 +23,15 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResultVO handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+    public ResultVo handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         //从异常对象中拿到ObjectError对象
         String defaultMessage = e.getBindingResult().getAllErrors().get(0).getDefaultMessage();
-        return ResultVO.error(ExceptionCodeEnum.LOGIN_INPUT_ERROR, defaultMessage);
+        return ResultVo.error(ExceptionCodeEnum.LOGIN_INPUT_ERROR, defaultMessage);
     }
 
     @ExceptionHandler(BizException.class)
-    public ResultVO handleBizException(BizException e) {
-        return ResultVO.error(e.getError());
+    public ResultVo handleBizException(BizException e) {
+        return ResultVo.error(e.getError());
     }
 
 

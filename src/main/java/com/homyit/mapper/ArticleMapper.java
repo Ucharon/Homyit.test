@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 /**
 * @author charon
 * @description 针对表【article】的数据库操作Mapper
-* @createDate 2022-10-08 21:06:08
+* @createDate 2022-10-09 20:59:09
 * @Entity com.homyit.entity.Article
 */
 @Mapper

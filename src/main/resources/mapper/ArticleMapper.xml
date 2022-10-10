@@ -5,20 +5,16 @@
 <mapper namespace="com.homyit.mapper.ArticleMapper">
 
     <resultMap id="BaseResultMap" type="com.homyit.entity.Article">
-            <id property="id" column="id" jdbcType="BIGINT"/>
-            <result property="userId" column="user_id" jdbcType="BIGINT"/>
-            <result property="title" column="title" jdbcType="VARCHAR"/>
-            <result property="content" column="content" jdbcType="VARCHAR"/>
-            <result property="views" column="views" jdbcType="BIGINT"/>
-            <result property="commentCount" column="comment_count" jdbcType="BIGINT"/>
-            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
-            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
-            <result property="likeCount" column="like_count" jdbcType="BIGINT"/>
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="userId" column="user_id" jdbcType="BIGINT"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="summary" column="summary" jdbcType="VARCHAR"/>
+
+        <result property="views" column="views" jdbcType="BIGINT"/>
+        <result property="commentCount" column="comment_count" jdbcType="BIGINT"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="likeCount" column="like_count" jdbcType="BIGINT"/>
     </resultMap>
 
-    <sql id="Base_Column_List">
-        id,user_id,title,
-        content,views,comment_count,
-        create_time,update_time,like_count
-    </sql>
 </mapper>

@@ -1,7 +1,7 @@
 package com.homyit.handler;
 
 import com.alibaba.fastjson.JSON;
-import com.homyit.entity.vo.ResultVO;
+import com.homyit.entity.vo.ResultVo;
 import com.homyit.enums.ExceptionCodeEnum;
 import com.homyit.utils.WebUtils;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -19,13 +19,13 @@ public class AuthenticationEntryPointImpl implements AuthenticationEntryPoint {
     public void commence(HttpServletRequest request,
                          HttpServletResponse response,
                          AuthenticationException authException) {
-        ResultVO<Object> result = null;
+        ResultVo<Object> result = null;
 
         if (BadCredentialsException.class == authException.getClass()) {
             //为用户名密码错误
-            result = ResultVO.error(ExceptionCodeEnum.LOGIN_ERROR);
+            result = ResultVo.error(ExceptionCodeEnum.LOGIN_ERROR);
         } else if (InsufficientAuthenticationException.class == authException.getClass()) {
-            result = ResultVO.error(ExceptionCodeEnum.LOGIN_INFORMATION_ILLEGAL);
+            result = ResultVo.error(ExceptionCodeEnum.LOGIN_INFORMATION_ILLEGAL);
         }
 
         String jsonString = JSON.toJSONString(result);
