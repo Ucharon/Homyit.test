@@ -21,8 +21,13 @@ public enum ExceptionCodeEnum {
     /**
      * 权限
      */
-    FORBIDDEN(700, "权限不足")
+    FORBIDDEN(700, "权限不足"),
 
+
+    /**
+     * 文件和图片
+     */
+    UPLOAD_FAIL(800, "文件或图片上传失败")
     ;
 
     private final Integer code;

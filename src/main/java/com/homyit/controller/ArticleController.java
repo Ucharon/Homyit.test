@@ -3,6 +3,7 @@ package com.homyit.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.homyit.entity.Article;
 import com.homyit.entity.dto.ArticlePageDto;
+import com.homyit.entity.vo.ArticleVo;
 import com.homyit.entity.vo.PageArticleVo;
 import com.homyit.entity.vo.ResultVo;
 import com.homyit.service.ArticleService;
@@ -25,27 +26,35 @@ public class ArticleController {
     /**
      * 添加文章
      * 权限：publish_article
+     *
      * @return
      */
     @PreAuthorize("hasAuthority('publish_article')")
     @PostMapping
     public ResultVo insertArticle(@Validated @RequestBody Article article) {
         articleService.insertArticle(article);
-
         return ResultVo.success();
     }
 
     /**
      * 分页获取文章
-     * 权限：无
+     * 权限：read_article
      */
+    @PreAuthorize("hasAuthority('read_article')")
     @PostMapping("/page")
     public ResultVo<Page<PageArticleVo>> page(@RequestBody ArticlePageDto articlePageDto) {
         Page<PageArticleVo> page = articleService.pageList(articlePageDto);
-
         return ResultVo.success(page);
     }
 
-
+    /**
+     * 根据id查询单个文章的详细信息
+     */
+    @PreAuthorize("hasAuthority('read_article')")
+    @GetMapping("/{id}")
+    public ResultVo<ArticleVo> selectOne(@PathVariable Long id) {
+        ArticleVo articleVo = articleService.getByIdWithUsername(id);
+        return ResultVo.success(articleVo);
+    }
 
 }

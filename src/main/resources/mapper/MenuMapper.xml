@@ -19,6 +19,7 @@
         <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
         <result property="isDeleted" column="is_deleted" jdbcType="INTEGER"/>
         <result property="remark" column="remark" jdbcType="VARCHAR"/>
+
     </resultMap>
     <select id="selectPermsByUserId" resultType="java.lang.String">
         SELECT DISTINCT m.`path`

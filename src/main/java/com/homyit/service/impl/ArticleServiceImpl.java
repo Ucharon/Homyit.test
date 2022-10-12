@@ -7,6 +7,7 @@ import com.homyit.entity.Article;
 import com.homyit.entity.LoginUser;
 import com.homyit.entity.User;
 import com.homyit.entity.dto.ArticlePageDto;
+import com.homyit.entity.vo.ArticleVo;
 import com.homyit.entity.vo.PageArticleVo;
 import com.homyit.mapper.UserMapper;
 import com.homyit.service.ArticleService;
@@ -92,6 +93,14 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article>
         articleVoPage.setRecords(articleVoList);
 
         return articleVoPage;
+    }
+
+    @Override
+    public ArticleVo getByIdWithUsername(Long id) {
+        //连表查询到username
+        ArticleVo articleVo = articleMapper.getByIdWithUsername(id);
+
+        return articleVo;
     }
 
 

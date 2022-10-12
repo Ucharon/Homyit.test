@@ -18,3 +18,10 @@ mybatis-plus:
       logic-delete-field: isDeleted
       logic-delete-value: 1
       logic-not-delete-value: 0
+
+ftp-config:
+  address: 47.98.194.190
+  port: 21
+  username: modules
+  password: D6fNpfxWsF6Cr84h
+  baseurl: /root/modules/

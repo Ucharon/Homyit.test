@@ -7,7 +7,6 @@ import lombok.ToString;
  * 通用状态码枚举
  */
 @Getter
-@ToString
 public enum ResultCodeEnum {
     //成功状态码
     SUCCESS(200, "成功");

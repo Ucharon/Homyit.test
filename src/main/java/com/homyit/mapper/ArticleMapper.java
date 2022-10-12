@@ -2,6 +2,7 @@ package com.homyit.mapper;
 
 import com.homyit.entity.Article;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.homyit.entity.vo.ArticleVo;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -13,6 +14,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface ArticleMapper extends BaseMapper<Article> {
 
+    ArticleVo getByIdWithUsername(Long id);
 }
 
 
