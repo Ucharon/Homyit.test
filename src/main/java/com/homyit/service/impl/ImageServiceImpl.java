@@ -1,5 +1,6 @@
 package com.homyit.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.homyit.entity.Image;
 import com.homyit.enums.FileTypeEnum;
@@ -12,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -26,7 +28,7 @@ public class ImageServiceImpl extends ServiceImpl<ImageMapper, Image>
     @Resource
     private ImageMapper imageMapper;
 
-    @Value("${ftp-config.baseurl}")
+    @Value("${nginx-config.baseurl}")
     private String baseurl;
 
     @Override
@@ -46,8 +48,25 @@ public class ImageServiceImpl extends ServiceImpl<ImageMapper, Image>
         //文件信息保存到数据库
         Image image = new Image();
         image.setArticleId(articleId);
-        image.setUrl(baseurl + FileTypeEnum.IS_IMAGE.getBasepath() + fileName);
+        image.setUrl(baseurl + fileName);
         imageMapper.insert(image);
+    }
+
+
+
+    @Override
+    public void upload(List<MultipartFile> files, Long articleId) throws IOException {
+        for (MultipartFile file : files) {
+            this.upload(file, articleId);
+        }
+    }
+
+    @Override
+    public List<Image> getImages(Long articleId) {
+        LambdaQueryWrapper<Image> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(Image::getArticleId, articleId);
+
+        return imageMapper.selectList(queryWrapper);
     }
 }
 

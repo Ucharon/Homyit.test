@@ -27,8 +27,13 @@ public enum ExceptionCodeEnum {
     /**
      * 文件和图片
      */
-    UPLOAD_FAIL(800, "文件或图片上传失败")
-    ;
+    UPLOAD_FAIL(800, "文件或图片上传失败"),
+
+
+    /**
+     * 参数
+     */
+    ERROR_PARAM(900, "参数错误");
 
     private final Integer code;
     private final String desc;

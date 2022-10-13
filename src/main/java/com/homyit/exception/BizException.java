@@ -12,7 +12,7 @@ import lombok.Getter;
 @Getter
 public class BizException extends RuntimeException {
 
-    private ExceptionCodeEnum error;
+    private final ExceptionCodeEnum error;
 
     /**
      * 构造器，有时我们需要将第三方异常转为自定义异常抛出，但又不想丢失原来的异常信息，此时可以传入cause

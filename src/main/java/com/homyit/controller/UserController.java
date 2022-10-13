@@ -1,5 +1,6 @@
 package com.homyit.controller;
 
+import com.homyit.annotation.SystemLog;
 import com.homyit.entity.User;
 import com.homyit.entity.vo.ResultVo;
 import com.homyit.service.UserService;
@@ -17,6 +18,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/login")
+    @SystemLog(businessName = "用户登录")
     public ResultVo<Map<String, String>> login(@RequestBody @Validated User user) {
         Map<String, String> map = userService.login(user);
         return ResultVo.success(map);

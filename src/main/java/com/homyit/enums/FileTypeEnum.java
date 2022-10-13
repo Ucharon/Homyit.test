@@ -15,10 +15,10 @@ public enum FileTypeEnum {
     IS_FILE(1, "files/");
 
     //图片或者文件的代码
-    private int code;
+    private final int code;
 
     //对应的basepath
-    private String basepath;
+    private final String basepath;
 
     FileTypeEnum(int code, String basepath) {
         this.code = code;

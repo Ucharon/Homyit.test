@@ -24,4 +24,6 @@ ftp-config:
   port: 21
   username: modules
   password: D6fNpfxWsF6Cr84h
-  baseurl: /root/modules/
+
+nginx-config:
+  baseurl: /images/
