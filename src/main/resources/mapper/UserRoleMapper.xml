@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.homyit.mapper.UserRoleMapper">
+
+    <resultMap id="BaseResultMap" type="com.homyit.entity.DO.UserRole">
+        <id property="userId" column="user_id" jdbcType="BIGINT"/>
+        <id property="roleId" column="role_id" jdbcType="BIGINT"/>
+    </resultMap>
+    <select id="selectByRole" resultType="java.lang.Long">
+        SELECT user_id
+        FROM user_role
+        WHERE role_id = #{roleId}
+    </select>
+
+
+</mapper>
