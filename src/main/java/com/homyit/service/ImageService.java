@@ -1,6 +1,6 @@
 package com.homyit.service;
 
-import com.homyit.entity.Image;
+import com.homyit.entity.DO.Image;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.springframework.web.multipart.MultipartFile;
 

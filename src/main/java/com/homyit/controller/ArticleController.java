@@ -1,11 +1,11 @@
 package com.homyit.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.homyit.entity.Article;
-import com.homyit.entity.dto.ArticlePageDto;
-import com.homyit.entity.vo.ArticleVo;
-import com.homyit.entity.vo.PageArticleVo;
-import com.homyit.entity.vo.ResultVo;
+import com.homyit.entity.DO.Article;
+import com.homyit.entity.DTO.ArticlePageDto;
+import com.homyit.entity.VO.ArticleVo;
+import com.homyit.entity.VO.PageArticleVo;
+import com.homyit.entity.VO.ResultVo;
 import com.homyit.service.ArticleService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;

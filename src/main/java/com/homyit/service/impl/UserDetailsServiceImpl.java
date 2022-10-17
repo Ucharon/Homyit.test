@@ -1,8 +1,8 @@
 package com.homyit.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.homyit.entity.LoginUser;
-import com.homyit.entity.User;
+import com.homyit.entity.DO.LoginUser;
+import com.homyit.entity.DO.User;
 import com.homyit.exception.BizException;
 import com.homyit.enums.ExceptionCodeEnum;
 import com.homyit.mapper.MenuMapper;

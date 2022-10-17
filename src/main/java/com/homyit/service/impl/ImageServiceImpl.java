@@ -2,7 +2,7 @@ package com.homyit.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.homyit.entity.Image;
+import com.homyit.entity.DO.Image;
 import com.homyit.enums.FileTypeEnum;
 import com.homyit.service.ImageService;
 import com.homyit.mapper.ImageMapper;

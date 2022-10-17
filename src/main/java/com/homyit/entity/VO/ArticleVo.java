@@ -1,6 +1,6 @@
-package com.homyit.entity.vo;
+package com.homyit.entity.VO;
 
-import com.homyit.entity.Article;
+import com.homyit.entity.DO.Article;
 import lombok.Data;
 
 @Data

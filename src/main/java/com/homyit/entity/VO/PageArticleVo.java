@@ -1,6 +1,5 @@
-package com.homyit.entity.vo;
+package com.homyit.entity.VO;
 
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.Data;

@@ -1,10 +1,10 @@
 package com.homyit.controller;
 
 
-import com.homyit.entity.Article;
-import com.homyit.entity.Image;
-import com.homyit.entity.vo.ResultVo;
+import com.homyit.entity.DO.Image;
+import com.homyit.entity.VO.ResultVo;
 import com.homyit.service.ImageService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -30,6 +30,7 @@ public class ImageController {
      * @throws IOException
      */
     @PostMapping("/upload")
+    @PreAuthorize("hasAuthority('upload_file')")
     public ResultVo upload(@RequestPart("file") MultipartFile file, @NotNull(message = "id不能为空") Long articleId) throws IOException {
         imageService.upload(file, articleId);
         return ResultVo.success();
@@ -43,6 +44,7 @@ public class ImageController {
      * @throws IOException
      */
     @PostMapping("/uploadImages")
+    @PreAuthorize("hasAuthority('upload_file')")
     public ResultVo uploadImages(@RequestPart("files") List<MultipartFile> files, @NotNull(message = "id不能为空") Long articleId) throws IOException {
         imageService.upload(files, articleId);
         return ResultVo.success();
@@ -54,6 +56,7 @@ public class ImageController {
      * @return
      */
     @GetMapping("/{articleId}")
+    @PreAuthorize("hasAuthority('download_file')")
     public ResultVo<List<Image>> getImages(@PathVariable @NotNull(message = "id不能为空") Long articleId) {
         List<Image> list = imageService.getImages(articleId);
         return ResultVo.success(list);

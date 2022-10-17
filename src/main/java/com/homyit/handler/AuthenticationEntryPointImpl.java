@@ -1,7 +1,7 @@
 package com.homyit.handler;
 
 import com.alibaba.fastjson.JSON;
-import com.homyit.entity.vo.ResultVo;
+import com.homyit.entity.VO.ResultVo;
 import com.homyit.enums.ExceptionCodeEnum;
 import com.homyit.utils.WebUtils;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @Component
 public class AuthenticationEntryPointImpl implements AuthenticationEntryPoint {
+
     @Override
     public void commence(HttpServletRequest request,
                          HttpServletResponse response,

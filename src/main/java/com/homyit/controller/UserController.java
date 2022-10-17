@@ -1,8 +1,8 @@
 package com.homyit.controller;
 
 import com.homyit.annotation.SystemLog;
-import com.homyit.entity.User;
-import com.homyit.entity.vo.ResultVo;
+import com.homyit.entity.DO.User;
+import com.homyit.entity.VO.ResultVo;
 import com.homyit.service.UserService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;

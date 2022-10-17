@@ -1,7 +1,7 @@
 package com.homyit.handler;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
-import com.homyit.entity.LoginUser;
+import com.homyit.entity.DO.LoginUser;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.MetaObject;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -30,11 +30,11 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
         metaObject.setValue("createTime", LocalDateTime.now());
         metaObject.setValue("updateTime", LocalDateTime.now());
         List<String> setterNames = Arrays.asList(metaObject.getSetterNames());
-        if (setterNames.contains("createUser")) {
-            metaObject.setValue("createUser", loginUser.getUser().getId());
+        if (setterNames.contains("createBy")) {
+            metaObject.setValue("createBy", loginUser.getUser().getId());
         }
-        if (setterNames.contains("updateUser")) {
-            metaObject.setValue("updateUser", loginUser.getUser().getId());
+        if (setterNames.contains("updateBy")) {
+            metaObject.setValue("updateBy", loginUser.getUser().getId());
         }
     }
 

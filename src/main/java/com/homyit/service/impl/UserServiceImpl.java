@@ -1,8 +1,8 @@
 package com.homyit.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.homyit.entity.LoginUser;
-import com.homyit.entity.User;
+import com.homyit.entity.DO.LoginUser;
+import com.homyit.entity.DO.User;
 import com.homyit.service.UserService;
 import com.homyit.mapper.UserMapper;
 import com.homyit.utils.JwtUtil;

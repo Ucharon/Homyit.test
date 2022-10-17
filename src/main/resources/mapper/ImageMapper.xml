@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.homyit.mapper.ImageMapper">
 
-    <resultMap id="BaseResultMap" type="com.homyit.entity.Image">
+    <resultMap id="BaseResultMap" type="com.homyit.entity.DO.Image">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="articleId" column="article_id" jdbcType="BIGINT"/>
             <result property="url" column="url" jdbcType="VARCHAR"/>

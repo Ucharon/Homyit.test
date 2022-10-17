@@ -1,7 +1,7 @@
 package com.homyit.handler;
 
 
-import com.homyit.entity.vo.ResultVo;
+import com.homyit.entity.VO.ResultVo;
 import com.homyit.exception.BizException;
 import com.homyit.enums.ExceptionCodeEnum;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.validation.ConstraintViolationException;
-import javax.validation.ValidationException;
 
 /**
  * 全局异常处理器

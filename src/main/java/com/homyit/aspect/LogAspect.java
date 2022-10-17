@@ -9,13 +9,10 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-import org.springframework.web.servlet.mvc.condition.RequestConditionHolder;
 
 import javax.servlet.http.HttpServletRequest;
-import java.net.URL;
 
 @Component
 @Aspect
@@ -40,13 +37,17 @@ public class LogAspect {
             log.info("=============End=============" + System.lineSeparator());
         }
 
-
         return ret;
     }
 
+//    @AfterThrowing(pointcut = "pt()", throwing = "ex")
+//    public void handler(Throwable ex) {
+//        log.info("Response          : {}", JSON.toJSONString(ResultVo.error(((BizException) ex.getCause()).getError())));
+//    }
+
     private void handleAfter(Object ret) {
         //打印出参
-        log.info("Resopnse          : {}", JSON.toJSONString(ret));
+        log.info("Response          : {}", JSON.toJSONString(ret));
     }
 
     private void handleBefore(ProceedingJoinPoint joinPoint) {

@@ -1,4 +1,4 @@
-package com.homyit.entity.dto;
+package com.homyit.entity.DTO;
 
 import lombok.Data;
 

@@ -1,6 +1,6 @@
 package com.homyit.filter;
 
-import com.homyit.entity.LoginUser;
+import com.homyit.entity.DO.LoginUser;
 import com.homyit.utils.JwtUtil;
 import com.homyit.utils.RedisCache;
 import io.jsonwebtoken.Claims;

@@ -1,6 +1,6 @@
 package com.homyit.service;
 
-import com.homyit.entity.Menu;
+import com.homyit.entity.DO.Menu;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

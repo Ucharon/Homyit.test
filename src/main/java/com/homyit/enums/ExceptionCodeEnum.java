@@ -2,6 +2,7 @@ package com.homyit.enums;
 
 
 import lombok.Getter;
+import lombok.ToString;
 
 /**
  * 通用错误枚举
@@ -33,7 +34,13 @@ public enum ExceptionCodeEnum {
     /**
      * 参数
      */
-    ERROR_PARAM(900, "参数错误");
+    ERROR_PARAM(900, "参数错误"),
+
+    /**
+     * Excel操作
+     */
+    EXCEL_ERROR(1000, "EXCEL格式错误")
+    ;
 
     private final Integer code;
     private final String desc;
@@ -42,6 +49,5 @@ public enum ExceptionCodeEnum {
         this.code = code;
         this.desc = desc;
     }
-
 
 }
