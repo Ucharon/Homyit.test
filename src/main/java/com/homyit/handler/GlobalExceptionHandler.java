@@ -20,7 +20,7 @@ import javax.validation.ConstraintViolationException;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    //散装
+    //请求参数里的参数校验
     @ExceptionHandler(ConstraintViolationException.class)
     public ResultVo<ExceptionCodeEnum> handleConstraintViolationException(ConstraintViolationException e) {
         //返回泛化的错误信息，比如“参数错误”
@@ -38,6 +38,7 @@ public class GlobalExceptionHandler {
         String defaultMessage = e.getBindingResult().getAllErrors().get(0).getDefaultMessage();
         return ResultVo.error(ExceptionCodeEnum.LOGIN_INPUT_ERROR, defaultMessage);
     }
+
 
     @ExceptionHandler(BizException.class)
     public ResultVo handleBizException(BizException e) {

@@ -8,11 +8,16 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 @Component
 @Aspect
@@ -70,9 +75,42 @@ public class LogAspect {
                 ((MethodSignature) joinPoint.getSignature()).getName());
         //打印请求的IP
         log.info("IP                : {}", request.getRemoteHost());
-        //打印请求入参
-        log.info("Request Args      : {}", JSON.toJSONString(joinPoint.getArgs()));
+
+        //获取并请求入参
+        String className = joinPoint.getTarget().getClass().getName();
+        Method method = ((MethodSignature) joinPoint.getSignature()).getMethod();
+
+        log.info("Request Args      : {}", JSON.toJSONString(getMethodParameter(method, joinPoint.getArgs())));
     }
+
+    /**
+     * 获取方法的参数
+     *
+     * @param method
+     * @param args
+     * @return
+     */
+    private Map<String, Object> getMethodParameter(Method method, Object[] args) {
+        Map<String, Object> map = new HashMap<>();
+        LocalVariableTableParameterNameDiscoverer parameterNameDiscoverer = new LocalVariableTableParameterNameDiscoverer();
+        //方法的形参名称
+        String[] parameterNames = parameterNameDiscoverer.getParameterNames(method);
+        for (int i = 0; i < Objects.requireNonNull(parameterNames).length; i++) {
+            //敏感词汇过滤
+            if ("password".equals(parameterNames[i])
+                    || "file".equals(parameterNames[i])
+                    || "response".equals(parameterNames[i])
+                    || "request".equals(parameterNames[i])) {
+                map.put(parameterNames[i], "受限的支持类型");
+            } else {
+                map.put(parameterNames[i], args[i]);
+            }
+        }
+
+
+        return map;
+    }
+
 
     private SystemLog getSystemLog(ProceedingJoinPoint joinPoint) {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();

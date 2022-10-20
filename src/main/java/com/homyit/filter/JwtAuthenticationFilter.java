@@ -1,6 +1,8 @@
 package com.homyit.filter;
 
 import com.homyit.entity.DO.LoginUser;
+import com.homyit.enums.ExceptionCodeEnum;
+import com.homyit.exception.BizException;
 import com.homyit.utils.JwtUtil;
 import com.homyit.utils.RedisCache;
 import io.jsonwebtoken.Claims;
@@ -46,14 +48,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             Claims claims = JwtUtil.parseJWT(token);
             userId = claims.getSubject();
         } catch (Exception e) {
-            throw new RuntimeException("token非法");
+            throw new BizException(ExceptionCodeEnum.LOGIN_INFORMATION_ILLEGAL);
         }
 
         //从redis获取用户信息
         String redisKey = "login:" + userId;
         LoginUser loginUser = redisCache.getCacheObject(redisKey);
         if (Objects.isNull(loginUser)) {
-            throw new RuntimeException("用户未登录");
+            throw new BizException(ExceptionCodeEnum.LOGIN_INFORMATION_ILLEGAL);
         }
 
         //存入SecurityContextHolder

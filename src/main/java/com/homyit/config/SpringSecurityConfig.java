@@ -1,6 +1,7 @@
 package com.homyit.config;
 
 import com.homyit.filter.JwtAuthenticationFilter;
+import com.homyit.handler.FilterChainExceptionHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -35,6 +36,10 @@ public class SpringSecurityConfig {
 
     @Resource
     private JwtAuthenticationFilter jwtAuthenticationFilter;
+
+    @Resource
+    private FilterChainExceptionHandler filterChainExceptionHandler;
+
 
     /**
      * 密码明文加密方式配置
@@ -83,6 +88,9 @@ public class SpringSecurityConfig {
 
                 //将token校验过滤器加入到过滤器链中
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                //
+                .addFilterBefore(filterChainExceptionHandler, JwtAuthenticationFilter.class)
+
                 .build();
     }
 

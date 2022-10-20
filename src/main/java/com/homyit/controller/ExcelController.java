@@ -1,6 +1,7 @@
 package com.homyit.controller;
 
 
+import com.homyit.annotation.SystemLog;
 import com.homyit.entity.VO.ResultVo;
 import com.homyit.service.ExcelService;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +28,7 @@ public class ExcelController {
      * @return
      */
     @PostMapping("/uploadStudent")
+    @SystemLog(businessName = "通过excel上传学生信息")
     public ResultVo upload(@RequestPart("file") MultipartFile file) {
         excelService.uploadStudent(file);
 
@@ -34,6 +36,7 @@ public class ExcelController {
     }
 
     @GetMapping("/downloadStudent")
+    @SystemLog(businessName = "获取学生信息excel表格")
     public ResultVo download(HttpServletResponse response) throws IOException {
         excelService.download(response);
 

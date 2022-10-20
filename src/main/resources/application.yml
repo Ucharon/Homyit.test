@@ -1,18 +1,17 @@
-server:
-  port: 8080
 spring:
+  profiles:
+    active: dev
   application:
     name: modules
   datasource:
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://47.98.194.190:3306/modules
       username: modules
       password: wSdbmhKNDJwRWPNA
+
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   global-config:
     db-config:
       id-type: ASSIGN_ID
@@ -21,10 +20,43 @@ mybatis-plus:
       logic-not-delete-value: 0
 
 ftp-config:
-  address: 47.98.194.190
   port: 21
   username: modules
-  password: D6fNpfxWsF6Cr84h
+  password: 123
 
 nginx-config:
   baseurl: /images/
+
+---
+server:
+  port: 8080
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    druid:
+      url: jdbc:mysql://47.98.194.190:3306/modules
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+ftp-config:
+  address: 47.98.194.190
+
+---
+server:
+  port: 9999
+spring:
+  config:
+    activate:
+      on-profile: test
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/modules
+      username: modules
+      password: wSdbmhKNDJwRWPNA
+ftp-config:
+  address: localhost

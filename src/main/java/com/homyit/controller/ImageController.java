@@ -1,6 +1,7 @@
 package com.homyit.controller;
 
 
+import com.homyit.annotation.SystemLog;
 import com.homyit.entity.DO.Image;
 import com.homyit.entity.VO.ResultVo;
 import com.homyit.service.ImageService;
@@ -31,6 +32,7 @@ public class ImageController {
      */
     @PostMapping("/upload")
     @PreAuthorize("hasAuthority('upload_file')")
+    @SystemLog(businessName = "上传图片")
     public ResultVo upload(@RequestPart("file") MultipartFile file, @NotNull(message = "id不能为空") Long articleId) throws IOException {
         imageService.upload(file, articleId);
         return ResultVo.success();
@@ -45,6 +47,7 @@ public class ImageController {
      */
     @PostMapping("/uploadImages")
     @PreAuthorize("hasAuthority('upload_file')")
+    @SystemLog(businessName = "批量上传图片")
     public ResultVo uploadImages(@RequestPart("files") List<MultipartFile> files, @NotNull(message = "id不能为空") Long articleId) throws IOException {
         imageService.upload(files, articleId);
         return ResultVo.success();
@@ -57,6 +60,7 @@ public class ImageController {
      */
     @GetMapping("/{articleId}")
     @PreAuthorize("hasAuthority('download_file')")
+    @SystemLog(businessName = "根据文章id查找图片")
     public ResultVo<List<Image>> getImages(@PathVariable @NotNull(message = "id不能为空") Long articleId) {
         List<Image> list = imageService.getImages(articleId);
         return ResultVo.success(list);

@@ -1,6 +1,7 @@
 package com.homyit.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.homyit.annotation.SystemLog;
 import com.homyit.entity.DO.Article;
 import com.homyit.entity.DTO.ArticlePageDto;
 import com.homyit.entity.VO.ArticleVo;
@@ -30,6 +31,7 @@ public class ArticleController {
      * @return
      */
     @PreAuthorize("hasAuthority('publish_article')")
+    @SystemLog(businessName = "添加文章")
     @PostMapping
     public ResultVo insertArticle(@Validated @RequestBody Article article) {
         articleService.insertArticle(article);
@@ -41,6 +43,7 @@ public class ArticleController {
      * 权限：read_article
      */
     @PreAuthorize("hasAuthority('read_article')")
+    @SystemLog(businessName = "分页查询获取文章")
     @PostMapping("/page")
     public ResultVo<Page<PageArticleVo>> page(@RequestBody ArticlePageDto articlePageDto) {
         Page<PageArticleVo> page = articleService.pageList(articlePageDto);
@@ -51,6 +54,7 @@ public class ArticleController {
      * 根据id查询单个文章的详细信息
      */
     @PreAuthorize("hasAuthority('read_article')")
+    @SystemLog(businessName = "查询单个文章")
     @GetMapping("/{id}")
     public ResultVo<ArticleVo> selectOne(@PathVariable Long id) {
         ArticleVo articleVo = articleService.getByIdWithUsername(id);

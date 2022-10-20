@@ -25,10 +25,9 @@ public class UserController {
     }
 
     @GetMapping("/logout")
+    @SystemLog(businessName = "用户退出登录")
     public ResultVo logout() {
         userService.logout();
         return ResultVo.success();
     }
-
-
 }

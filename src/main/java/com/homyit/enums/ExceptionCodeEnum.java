@@ -18,6 +18,7 @@ public enum ExceptionCodeEnum {
     LOGIN_ERROR(601, "用户名或密码错误"),
     LOGIN_INPUT_ERROR(602, "输入格式不正确"),
     LOGIN_INFORMATION_ILLEGAL(603, "登录信息失效"),
+    TOKEN_ILLEGAL(604, "Token非法"),
 
     /**
      * 权限
